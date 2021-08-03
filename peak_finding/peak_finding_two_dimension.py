@@ -30,7 +30,7 @@ def solution(nums: List[List[int]]) -> int:
         return max(nums[mid_col_max_idx][0], nums[mid_col_max_idx][1])
 
     if nums[mid_col_max_idx][mid_col] < nums[mid_col_max_idx][mid_col + 1]:
-        return solution([x[mid_col + 1:] for x in nums])
+        return solution([x[mid_col + 1 :] for x in nums])
 
     elif nums[mid_col_max_idx][mid_col] < nums[mid_col_max_idx][mid_col - 1]:
         return solution([x[:mid_col] for x in nums])
