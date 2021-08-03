@@ -8,16 +8,25 @@ from typing import List
 def solution(nums: List[int]) -> int:
     if not nums:
         return
-    
+
     n = len(nums)
+    mid = n // 2
     if n == 1:
         return nums[0]
 
-    # recursively divide and conquer
-    if nums[n // 2] >= nums[n-1] and nums[n // 2] >= nums[0]
-    return
+    if n == 2:
+        return max(nums[0], nums[1])
+
+    if nums[mid] < nums[mid - 1]:
+        # the number at lhs is bigger, thus there will be a peak at the left half
+        return solution(nums[:mid])
+    elif nums[mid] < nums[mid + 1]:
+        # the number at rhs is bigger, thus there will be a peak at the right half
+        return solution(nums[mid + 1 :])
+    else:
+        return nums[mid]
 
 
 if __name__ == "__main__":
-    test_case = []
+    test_case = [1, 2, 3, 4, 5, 4, 1]
     print(solution(test_case))
