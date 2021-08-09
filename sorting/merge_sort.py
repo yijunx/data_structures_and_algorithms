@@ -8,6 +8,7 @@ from typing import List
 
 
 def merge(nums1: List[int], nums2: List[int]) -> List[int]:
+    # num1 and num2 must be sorted before hand
     # one side is empty
     if not nums1:
         return nums2
@@ -17,15 +18,23 @@ def merge(nums1: List[int], nums2: List[int]) -> List[int]:
     # use a two-finger method
     key1 = 0
     key2 = 0
-
+    len1 = len(nums1)
+    len2 = len(nums2)
     sorted = []
-    while key1 < len(nums1) and key2 < len(nums2):
-        if nums1[key1] < nums2[key2] or key2 == len(nums2) - 1:
+    while key1 + key2 < len1 + len2:
+        if key1 == len1:
+            sorted.append(nums2[key2])
+            key2 += 1
+        elif key2 == len2:
             sorted.append(nums1[key1])
             key1 += 1
-        elif nums1[key1] >= nums2[key2] or key1 == len(nums1) - 1:
-            sorted.append(nums1[key2])
-            key2 += 1
+        else:
+            if nums1[key1] < nums2[key2]:
+                sorted.append(nums1[key1])
+                key1 += 1
+            else:
+                sorted.append(nums2[key2])
+                key2 += 1
     return sorted
 
 
@@ -44,5 +53,8 @@ def solution(nums: List[int]) -> List[int]:
 
 
 if __name__ == "__main__":
-    test_case = [6, 4, 3, 8, 1, 9, 0, 0, -1]
+    test_case = [6, 4, 3, 8, 1, 9, 0, 0, -1, 11, -21, 12, 3, 5]
     print(solution(test_case))
+    # test_merge1 = [1,2,6]
+    # test_merge2 = [2,3,8]
+    # print(merge(test_merge1, test_merge2))
