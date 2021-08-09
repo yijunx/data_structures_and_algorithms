@@ -1,5 +1,5 @@
 # data_structures_and_algorithms
-some serious study lol
+some serious study lol. thanks to the mit 6006 lecture on youtube.
 
 * This is a repo with venv..
 
