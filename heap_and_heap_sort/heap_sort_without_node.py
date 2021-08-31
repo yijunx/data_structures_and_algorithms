@@ -11,19 +11,6 @@ def right(num: int):
 
 
 def maxHeapifyList(nums: List[int], current_root: int = 0) -> List[int]:
-    # assume the left and right node both are max heap already
-    # and there wont be any node with right, but left is None
-    #         0
-    #    1          2   # current_root * 2 + 1 and current_root * 2 + 2
-    #  3   4     5     6
-    # 7 8 9 10 11 12 13 14
-    # if len(nums) == 1:
-    #     return nums
-    # elif len(nums) == 2:
-    #     if nums[left(current_root)] > nums[current_root]:
-    #         nums[left(current_root)], nums[current_root] = nums[current_root], nums[left(current_root)]
-    #     return nums
-    # else:
 
     try:  # if it has right side, it sure has left side
         _ = nums[right(current_root)]
@@ -71,20 +58,6 @@ def maxHeapifyList(nums: List[int], current_root: int = 0) -> List[int]:
                 return nums
         except:
             return nums
-
-    # else:
-    #     if node.left.val > node.val and node.left.val >= node.right.val:
-    #         # swap left
-    #         node.left.val, node.val = node.val, node.left.val
-    #         node.left = maxHeapify(node.left)
-    #         return node
-    #     elif node.right.val > node.val and node.right.val >= node.left.val:
-    #         # swap right
-    #         node.right.val, node.val = node.val, node.right.val
-    #         node.right = maxHeapify(node.right)
-    #         return node
-    #     else:
-    #         return node
 
 
 class MyMaxHeapNoNode:
