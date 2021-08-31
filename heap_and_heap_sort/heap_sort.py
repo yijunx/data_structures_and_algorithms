@@ -68,7 +68,7 @@ class MyMaxHeap:
             nums.append(self.nodes[i].val)
             i += 1
         return nums
-        
+
     def print_in_sequence(self):
         print(self.sequenced_list())
 
@@ -79,11 +79,11 @@ class MyMaxHeap:
         while working_idx >= 0:
             maxHeapify(self.nodes[working_idx])
             working_idx -= 1
-    
+
     def sortDescending(self) -> List[int]:
         # STEP 1 : find the max element at self.nodes[0]
         # STEP 2 : swap with self.nodes[self.length - 1]
-        # STEP 3 : now get rid of the max node at the end, put it in the array, 
+        # STEP 3 : now get rid of the max node at the end, put it in the array,
         # STEP 4 : After the swap, the root's left/right are both max heap still! so, heapify the whole thing
         # STEP 1 ...
 
@@ -93,7 +93,10 @@ class MyMaxHeap:
             # STEP 4:
             self.maxHeapifyWholeTrunk()
             # STEP 1/2:
-            self.nodes[0].val, self.nodes[self.length - 1].val = self.nodes[self.length - 1].val, self.nodes[0].val
+            self.nodes[0].val, self.nodes[self.length - 1].val = (
+                self.nodes[self.length - 1].val,
+                self.nodes[0].val,
+            )
             # STEP 3:
             nums.append(self.nodes[self.length - 1].val)
             parent_node = self.nodes[(self.length - 1 - 1) // 2]
@@ -129,16 +132,21 @@ if __name__ == "__main__":
     mmh = MyMaxHeap(nums)
     print(mmh.root.val)
     print(mmh.root.left.val, mmh.root.right.val)
-    print(mmh.root.left.left.val, mmh.root.left.right.val, mmh.root.right.left.val, mmh.root.right.right.val)
+    print(
+        mmh.root.left.left.val,
+        mmh.root.left.right.val,
+        mmh.root.right.left.val,
+        mmh.root.right.right.val,
+    )
     mmh.print_in_sequence()
 
-    print("Running the first heapify whole trunk")
-    mmh.maxHeapifyWholeTrunk()
-    print(mmh.root.val)
-    print(mmh.root.left.val, mmh.root.right.val)
-    print(mmh.root.left.left.val, mmh.root.left.right.val, mmh.root.right.left.val, mmh.root.right.right.val)
-    mmh.print_in_sequence()
-    
+    # print("Running the first heapify whole trunk")
+    # mmh.maxHeapifyWholeTrunk()
+    # print(mmh.root.val)
+    # print(mmh.root.left.val, mmh.root.right.val)
+    # print(mmh.root.left.left.val, mmh.root.left.right.val, mmh.root.right.left.val, mmh.root.right.right.val)
+    # mmh.print_in_sequence()
+
     print("time to sort descending")
     nums = mmh.sortDescending()
     print(nums)
